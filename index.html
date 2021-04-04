@@ -28,63 +28,24 @@
         <form id="" class="navbar__Add-task">
           <input type="text" placeholder="Add task" />
         </form>
-        <div class="navbar__Todo-List__Pending">
+        <div class="navbar__Todo-List__title">
           <h3>Pending</h3>
+          <ul class="navbar__Todo-List__content"></ul>
         </div>
-        <div class="navbar__Todo-List__Finished">
+        <div class="navbar__Todo-List__title">
           <h3>Finished</h3>
+          <ul class="navbar__Todo-List__content"></ul>
         </div>
       </div>
 
-      <ul class="navbar__menu">
-        <li class="navbar__menu__item">
-          <a href="https://www.google.com/" target="blank">
-            <img
-              src="imgs/website/Google.png"
-              alt="Google"
-              height="50px"
-              weight="50px"
-            />
-          </a>
-        </li>
-        <li class="navbar__menu__item">
-          <a href="https://www.naver.com/" target="blank">
-            <img
-              src="imgs/website/Naver.PNG"
-              alt="Naver"
-              height="50px"
-              weight="50px"
-            />
-          </a>
-        </li>
-        <li class="navbar__menu__item">
-          <a href="https://www.youtube.com/" target="blank">
-            <img
-              src="imgs/website/Youtube.png"
-              alt="Youtube"
-              height="50px"
-              weight="50px"
-            />
-          </a>
-        </li>
-        <li class="navbar__menu__item">
-          <a href="https://music.youtube.com/" target="blank">
-            <img
-              src="imgs/website/YoutubeMusic.png"
-              alt="YotubeMusic"
-              height="50px"
-              weight="50px"
-            />
-          </a>
-        </li>
-      </ul>
-      <!-- <button class="navbar__toggle-btn">
+      <!-- toggle-btn -->
+      <button class="navbar__toggle-btn">
         <i class="fas fa-bars"></i>
-      </button> -->
+      </button>
     </nav>
 
     <!-- Clock and Google-Search -->
-    <section id="home">
+    <section id="home" class="section">
       <!-- Clock -->
       <div class="home__clock">
         <h1>24:00:00</h1>
@@ -99,7 +60,7 @@
     </section>
 
     <!-- Calendar and weather -->
-    <section id="calendar-weather">
+    <section id="calendar-weather" class="section">
       <!-- Calendar -->
       <div class="cw__calendar">Calendar</div>
 
@@ -110,8 +71,36 @@
       <div class="cw__air">Air</div>
     </section>
 
+    <!-- Web Site go -->
+    <section id="website" class="section">
+      <div class="website__web__icon">
+        <ul class="website__menu">
+          <li class="website__menu__item">
+            <a href="https://www.google.com/" target="blank">
+              <img src="imgs/website/Google.png" alt="Google" />
+            </a>
+          </li>
+          <li class="website__menu__item">
+            <a href="https://www.naver.com/" target="blank">
+              <img src="imgs/website/Naver.PNG" alt="Naver" />
+            </a>
+          </li>
+          <li class="website__menu__item">
+            <a href="https://www.youtube.com/" target="blank">
+              <img src="imgs/website/Youtube.png" alt="Youtube" />
+            </a>
+          </li>
+          <li class="website__menu__item">
+            <a href="https://music.youtube.com/" target="blank">
+              <img src="imgs/website/YoutubeMusic.png" alt="YotubeMusic" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Contact -->
-    <section id="contact" class="section">
+    <footer id="contact" class="section">
       <div class="contact__info">
         <div class="contact__links">
           <a href="https://github.com/shj3497" target="blank">
@@ -125,6 +114,6 @@
           </p>
         </div>
       </div>
-    </section>
+    </footer>
   </body>
 </html>

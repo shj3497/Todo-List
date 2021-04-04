@@ -3,12 +3,128 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="description" content="TodoList for developer ShimHyeokJin" />
+    <meta name="author" conetent="ShimHyeokJin" />
+    <title>TodoList</title>
+    <link rel="icon" type="image/png" href="imgs/neshot.png" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
   </head>
   <body>
-    <!-- 구상중 -->
-    <h1>TodoList</h1>
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar__Todo-List">
+        <h2>TASKS</h2>
+        <form id="" class="navbar__Add-task">
+          <input type="text" placeholder="Add task" />
+        </form>
+        <div class="navbar__Todo-List__Pending">
+          <h3>Pending</h3>
+        </div>
+        <div class="navbar__Todo-List__Finished">
+          <h3>Finished</h3>
+        </div>
+      </div>
+
+      <ul class="navbar__menu">
+        <li class="navbar__menu__item">
+          <a href="https://www.google.com/" target="blank">
+            <img
+              src="imgs/website/Google.png"
+              alt="Google"
+              height="50px"
+              weight="50px"
+            />
+          </a>
+        </li>
+        <li class="navbar__menu__item">
+          <a href="https://www.naver.com/" target="blank">
+            <img
+              src="imgs/website/Naver.PNG"
+              alt="Naver"
+              height="50px"
+              weight="50px"
+            />
+          </a>
+        </li>
+        <li class="navbar__menu__item">
+          <a href="https://www.youtube.com/" target="blank">
+            <img
+              src="imgs/website/Youtube.png"
+              alt="Youtube"
+              height="50px"
+              weight="50px"
+            />
+          </a>
+        </li>
+        <li class="navbar__menu__item">
+          <a href="https://music.youtube.com/" target="blank">
+            <img
+              src="imgs/website/YoutubeMusic.png"
+              alt="YotubeMusic"
+              height="50px"
+              weight="50px"
+            />
+          </a>
+        </li>
+      </ul>
+      <!-- <button class="navbar__toggle-btn">
+        <i class="fas fa-bars"></i>
+      </button> -->
+    </nav>
+
+    <!-- Clock and Google-Search -->
+    <section id="home">
+      <!-- Clock -->
+      <div class="home__clock">
+        <h1>24:00:00</h1>
+      </div>
+
+      <!-- Search -->
+      <div class="home__search">
+        <form action="https://www.google.com/search" class="search__form">
+          <input type="text" class="search__text" placeholder="Search" />
+        </form>
+      </div>
+    </section>
+
+    <!-- Calendar and weather -->
+    <section id="calendar-weather">
+      <!-- Calendar -->
+      <div class="cw__calendar">Calendar</div>
+
+      <!-- Weather -->
+      <div class="cw__weather">Weather</div>
+
+      <!-- Air pollution -->
+      <div class="cw__air">Air</div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="contact__info">
+        <div class="contact__links">
+          <a href="https://github.com/shj3497" target="blank">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <div class="contact__rights">
+          <p>
+            2021 ShimHyeokJin <br />
+            All rights reserved
+          </p>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

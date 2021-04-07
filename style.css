@@ -132,10 +132,16 @@ h3 {
   display: block;
 }
 
+/* main__content */
+.main__content {
+  display: flex;
+}
+
+/* Web Site go */
 .website__menu {
   display: flex;
   margin: 28px;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .website__menu__item img {

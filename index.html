@@ -19,6 +19,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
+    <script src="calendar/calendar.js" defer></script>
   </head>
   <body>
     <!-- Navbar -->
@@ -43,61 +44,83 @@
         <i class="fas fa-bars"></i>
       </button>
     </nav>
+    <main class="main__content">
+      <!-- Clock and Google-Search -->
+      <div id="home" class="section">
+        <!-- Clock -->
+        <div class="home__clock">
+          <h1>24:00:00</h1>
+        </div>
 
-    <!-- Clock and Google-Search -->
-    <section id="home" class="section">
-      <!-- Clock -->
-      <div class="home__clock">
-        <h1>24:00:00</h1>
+        <!-- Search -->
+        <div class="home__search">
+          <form action="https://www.google.com/search" class="search__form">
+            <input type="text" class="search__text" placeholder="Search" />
+          </form>
+        </div>
       </div>
 
-      <!-- Search -->
-      <div class="home__search">
-        <form action="https://www.google.com/search" class="search__form">
-          <input type="text" class="search__text" placeholder="Search" />
-        </form>
+      <!-- Calendar and weather -->
+      <div id="calendar-weather" class="section">
+        <!-- Web Site go -->
+        <div class="website__web__icon">
+          <ul class="website__menu">
+            <li class="website__menu__item">
+              <a href="https://www.google.com/" target="blank">
+                <img src="imgs/website/Google.png" alt="Google" />
+              </a>
+            </li>
+            <li class="website__menu__item">
+              <a href="https://www.naver.com/" target="blank">
+                <img src="imgs/website/Naver.PNG" alt="Naver" />
+              </a>
+            </li>
+            <li class="website__menu__item">
+              <a href="https://www.youtube.com/" target="blank">
+                <img src="imgs/website/Youtube.png" alt="Youtube" />
+              </a>
+            </li>
+            <li class="website__menu__item">
+              <a href="https://music.youtube.com/" target="blank">
+                <img src="imgs/website/YoutubeMusic.png" alt="YotubeMusic" />
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Calendar -->
+        <div class="calendar">
+          <h2 class="calendar__header"></h2>
+          <div class="calendar__year-month">
+            <div class="calendar__btns">
+              <button class="calendar_btn">&lt;</button>
+              <button class="calendar_btn">Today</button>
+              <button class="calendar_btn">&gt;</button>
+            </div>
+          </div>
+          <table class="calendar__week-day">
+            <thead class="calendar__days">
+              <tr>
+                <td>Sun</td>
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wen</td>
+                <td>Thu</td>
+                <td>Fri</td>
+                <td>Sat</td>
+              </tr>
+            </thead>
+            <tbody class="calendar__dates"></tbody>
+          </table>
+        </div>
+
+        <!-- Weather -->
+        <div class="cw__weather">Weather</div>
+
+        <!-- Air pollution -->
+        <div class="cw__air">Air</div>
       </div>
-    </section>
-
-    <!-- Calendar and weather -->
-    <section id="calendar-weather" class="section">
-      <!-- Calendar -->
-      <div class="cw__calendar">Calendar</div>
-
-      <!-- Weather -->
-      <div class="cw__weather">Weather</div>
-
-      <!-- Air pollution -->
-      <div class="cw__air">Air</div>
-    </section>
-
-    <!-- Web Site go -->
-    <section id="website" class="section">
-      <div class="website__web__icon">
-        <ul class="website__menu">
-          <li class="website__menu__item">
-            <a href="https://www.google.com/" target="blank">
-              <img src="imgs/website/Google.png" alt="Google" />
-            </a>
-          </li>
-          <li class="website__menu__item">
-            <a href="https://www.naver.com/" target="blank">
-              <img src="imgs/website/Naver.PNG" alt="Naver" />
-            </a>
-          </li>
-          <li class="website__menu__item">
-            <a href="https://www.youtube.com/" target="blank">
-              <img src="imgs/website/Youtube.png" alt="Youtube" />
-            </a>
-          </li>
-          <li class="website__menu__item">
-            <a href="https://music.youtube.com/" target="blank">
-              <img src="imgs/website/YoutubeMusic.png" alt="YotubeMusic" />
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
+    </main>
 
     <!-- Contact -->
     <footer id="contact" class="section">

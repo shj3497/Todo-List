@@ -23,28 +23,29 @@
   </head>
   <body>
     <main class="main__content">
-      <!-- Navbar -->
-      <nav id="navbar">
-        <div class="navbar__Todo-List">
-          <h2>TASKS</h2>
-          <form id="" class="navbar__Add-task">
-            <input type="text" placeholder="Add task" />
-          </form>
-          <div class="navbar__Todo-List__title">
-            <h3>Pending</h3>
-            <ul class="navbar__Todo-List__content"></ul>
-          </div>
-          <div class="navbar__Todo-List__title">
-            <h3>Finished</h3>
-            <ul class="navbar__Todo-List__content"></ul>
-          </div>
-        </div>
-
-        <!-- toggle-btn -->
-        <button class="navbar__toggle-btn">
-          <i class="fas fa-bars"></i>
+      <!-- Todo-List -->
+      <div class="todo-List">
+        <h2>TASKS</h2>
+        <button class="todo-List__toggle-btn2">
+          <i class="fas fa-arrow-left"></i>
         </button>
-      </nav>
+
+        <form id="" class="todo-List__Add-task">
+          <input type="text" placeholder="Add task" />
+        </form>
+        <div class="todo-List__title">
+          <h3>Pending</h3>
+          <ul class="todo-List__content"></ul>
+        </div>
+        <div class="todo-List__title">
+          <h3>Finished</h3>
+          <ul class="todo-List__content"></ul>
+        </div>
+      </div>
+      <!-- toggle-btn -->
+      <button class="todo-List__toggle-btn open">
+        <i class="fas fa-bars"></i>
+      </button>
 
       <!-- Clock and Google-Search -->
       <div id="home" class="section">

@@ -22,29 +22,30 @@
     <script src="calendar/calendar.js" defer></script>
   </head>
   <body>
-    <!-- Navbar -->
-    <nav id="navbar">
-      <div class="navbar__Todo-List">
-        <h2>TASKS</h2>
-        <form id="" class="navbar__Add-task">
-          <input type="text" placeholder="Add task" />
-        </form>
-        <div class="navbar__Todo-List__title">
-          <h3>Pending</h3>
-          <ul class="navbar__Todo-List__content"></ul>
-        </div>
-        <div class="navbar__Todo-List__title">
-          <h3>Finished</h3>
-          <ul class="navbar__Todo-List__content"></ul>
-        </div>
-      </div>
-
-      <!-- toggle-btn -->
-      <button class="navbar__toggle-btn">
-        <i class="fas fa-bars"></i>
-      </button>
-    </nav>
     <main class="main__content">
+      <!-- Navbar -->
+      <nav id="navbar">
+        <div class="navbar__Todo-List">
+          <h2>TASKS</h2>
+          <form id="" class="navbar__Add-task">
+            <input type="text" placeholder="Add task" />
+          </form>
+          <div class="navbar__Todo-List__title">
+            <h3>Pending</h3>
+            <ul class="navbar__Todo-List__content"></ul>
+          </div>
+          <div class="navbar__Todo-List__title">
+            <h3>Finished</h3>
+            <ul class="navbar__Todo-List__content"></ul>
+          </div>
+        </div>
+
+        <!-- toggle-btn -->
+        <button class="navbar__toggle-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+
       <!-- Clock and Google-Search -->
       <div id="home" class="section">
         <!-- Clock -->
@@ -90,16 +91,28 @@
 
         <!-- Calendar -->
         <div class="calendar">
-          <h2 class="calendar__header"></h2>
-          <div class="calendar__year-month">
-            <div class="calendar__btns">
-              <button class="calendar_btn">&lt;</button>
-              <button class="calendar_btn">Today</button>
-              <button class="calendar_btn">&gt;</button>
-            </div>
-          </div>
           <table class="calendar__week-day">
             <thead class="calendar__days">
+              <tr class="calendar__head">
+                <td class="calendar__minus_year">
+                  <i class="fas fa-angle-double-left"></i>
+                </td>
+                <td class="calendar__minus_month">
+                  <i class="fas fa-angle-left"></i>
+                </td>
+                <td colspan="3">
+                  <h2 class="calendar__selected"></h2>
+                </td>
+                <td class="calendar__plus_month">
+                  <i class="fas fa-angle-right"></i>
+                </td>
+                <td class="calendar__plus_year">
+                  <i class="fas fa-angle-double-right"></i>
+                </td>
+              </tr>
+              <tr>
+                <td class="calendar__today" colspan="7"></td>
+              </tr>
               <tr>
                 <td>Sun</td>
                 <td>Mon</td>

@@ -2,14 +2,17 @@
 // const는 변수 재선언, 재할당 불가능
 
 // new Date(year, monthIndex[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
+const viewToday = new Intl.DateTimeFormat('ko-KR').format(new Date());
+// console.log(viewToday);
+document.querySelector('.calendar__today').textContent = viewToday.replace('.','년').replace('.','월').replace('.','일');
+
 const date = new Date();
-
-
 const viewYear = date.getFullYear();
 const viewMonth = date.getMonth();
+const viewMonth_eng = new Intl.DateTimeFormat('en-US', {month:'long'}).format(date);
+// console.log(viewMonth_eng)
 
-
-document.querySelector('.calendar__header').textContent = `${viewYear}년 ${viewMonth + 1}월`;
+document.querySelector('.calendar__selected').textContent = `${viewMonth_eng} ${viewYear}`;
 
 const prev_month = new Date(viewYear, viewMonth, 0);
 // console.log(prev_month)
@@ -35,7 +38,7 @@ if (prev_month_last_day !== 6){
         prev_month_Dates.unshift(prev_month_last_date - i);
     }
 }
-console.log(`prev_month_Dates[] >>> : ${prev_month_Dates}`);
+// console.log(`prev_month_Dates[] >>> : ${prev_month_Dates}`);
 
 
 // 이번달 날짜
@@ -53,13 +56,13 @@ for(let i=1; i<this_month_last_date+1; i++){
 for (let i=1; i<7-this_month_last_day; i++){
     next_month_Dates.push(i);
 }
-console.log(`next_month_Dates[] >>> : ${next_month_Dates}`);
+// console.log(`next_month_Dates[] >>> : ${next_month_Dates}`);
 
 const viewDates = prev_month_Dates.concat(this_month_Dates).concat(next_month_Dates);
-console.log(`viewDates >>> : ${viewDates}`);
+// console.log(`viewDates >>> : ${viewDates}`);
 
 viewDates.forEach((viewDate, i) => {
-    console.log(i);
+    // console.log(i);
     if(i % 7 === 0){
         viewDates[i] = `<tr><td class='calendar__date'>${viewDate}</td>`    
     }else if(i % 7 === 6){
@@ -67,7 +70,7 @@ viewDates.forEach((viewDate, i) => {
     }else{
         viewDates[i] = `<td class='calendar__date'>${viewDate}</td>`
     }
-    console.log(viewDates[i]);
+    // console.log(viewDates[i]);
 });
 
 document.querySelector('.calendar__dates').innerHTML = viewDates.join('');

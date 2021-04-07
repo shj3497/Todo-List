@@ -15,3 +15,29 @@ todo_List__toggle2.addEventListener('click', () => {
     todo_List.classList.add('close');
     todo_List__toggle.classList.add('open');
 })
+
+// Home
+function current_times(){
+    const current_date = new Date();
+    const current_hour = addZeros(current_date.getHours(),2);
+    
+    const current_minute = addZeros(current_date.getMinutes(),2);
+    
+    const current_second = addZeros(current_date.getSeconds(),2);
+    
+    const current_time = `${current_hour}:${current_minute}:${current_second}`
+    
+    document.querySelector('.home__clock h1').innerHTML = current_time;
+    setTimeout("current_times()", 1000);
+}
+function addZeros(num, digit){
+    let zero = '';
+    let number = num.toString();
+    if(number.length < digit){
+        for(let i=0; i<digit-number.length; i++){
+            zero += '0';
+        }
+    }
+    return zero + number;
+}
+current_times();

@@ -109,7 +109,7 @@ p {
 } */
 
 .todo-List {
-  width: 31%;
+  width: 30%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 
@@ -186,11 +186,12 @@ h3 {
 .website__menu__item img {
   height: 40px;
   width: 40px;
-  margin: 0px 5px;
+  margin: 0px 10px;
 }
 
 /* Home */
 #home {
+  width: 40%;
 }
 
 /* Home - name */
@@ -214,7 +215,7 @@ h3 {
 }
 
 .name__form input[type="text"]:focus {
-  width: 100%;
+  width: 70%;
   /* border: 2px solid var(--color-purple); */
   border-color: var(--color-purple);
 }
@@ -244,11 +245,52 @@ h3 {
   transition: 0.2s;
 }
 .search__form input[type="text"]:focus {
-  width: 100%;
+  width: 70%;
   /* border: 2px solid var(--color-purple); */
   border-color: var(--color-purple);
 }
 
+/* Calendar - Weather */
+#calendar-weather {
+  width: 30%;
+}
+
+.calendar table {
+  width: 80%;
+  table-layout: fixed;
+  margin: auto;
+  font-size: var(--font-regular);
+}
+
+.calendar__head {
+  cursor: pointer;
+}
+
+.calendar__today {
+  cursor: pointer;
+  color: #52734d;
+  font-weight: var(--weight-semi-bold);
+  text-align: left;
+}
+
+.calendar__week {
+  font-weight: var(--weight-semi-bold);
+}
+
+.calendar__week td:first-child {
+  color: red;
+}
+
+.calendar__week td:last-child {
+  color: blue;
+}
+
+.calendar__dates > tr > td:first-child {
+  color: red;
+}
+.calendar__dates > tr > td:last-child {
+  color: blue;
+}
 /* Contact */
 #contact {
   height: 10%;

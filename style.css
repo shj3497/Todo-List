@@ -5,9 +5,10 @@
   --color-light-white: #eeeeee;
   --color-dark-white: #bdbdbd;
   --color-black: #000000;
+  --color-purple: #732e9b;
 
   /* Font size */
-  --font-large: 80px;
+  --font-large: 100px;
   --font-medium: 28px;
   --font-regular: 18px;
   --font-small: 16px;
@@ -19,7 +20,7 @@
   --weight-regular: 400;
 
   /* Animation */
-  --animation-duration: 500ms;
+  --animation-duration: 300ms;
 }
 
 /* Universal tags */
@@ -106,7 +107,7 @@ p {
 } */
 
 .todo-List {
-  width: 32%;
+  width: 31%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 
@@ -190,9 +191,35 @@ h3 {
 #home {
 }
 
+/* Contact */
 #contact {
   height: 10%;
   width: 100%;
+}
+
+.contact__info {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.contact__links,
+.contact__links i {
+  font-size: 35px;
+  margin: 2px 0px;
+  color: var(--color-black);
+}
+
+.contact__links:hover,
+.contact__links i:hover {
+  color: var(--color-purple);
+  transform: scale(1.1);
+  transition: transform var(--animation-duration) ease;
+}
+
+.contact__rights {
+  margin: 0px 10px;
+  text-align: center;
 }
 
 @media screen and (max-width: 480px) {

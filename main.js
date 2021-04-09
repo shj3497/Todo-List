@@ -41,3 +41,18 @@ function addZeros(num, digit){
     return zero + number;
 }
 current_times();
+
+// Search
+const search_text = document.querySelector('.search__text');
+search_text.addEventListener('keyup', event => {
+    
+    const search_text_value = search_text.value;
+    const search_form = document.querySelector('#search__form');
+
+    if(event.keyCode === 13){
+        
+        search_form.action(`https://www.google.com/search`);
+        search_form.submit();
+        
+    }
+})

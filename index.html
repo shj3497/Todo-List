@@ -56,7 +56,8 @@
 
         <!-- Search -->
         <div class="home__search">
-          <form action="https://www.google.com/search" class="search__form">
+          <form method="GET" id="search__form" target="_blank">
+            <input name="q" type="hidden" />
             <input type="text" class="search__text" placeholder="Search" />
           </form>
         </div>
@@ -137,7 +138,7 @@
     </main>
 
     <!-- Contact -->
-    <footer id="contact" class="section">
+    <footer id="contact">
       <div class="contact__info">
         <div class="contact__links">
           <a href="https://github.com/shj3497" target="blank">

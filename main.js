@@ -16,7 +16,37 @@ todo_List__toggle2.addEventListener('click', () => {
     todo_List__toggle.classList.add('open');
 })
 
-// Home
+
+// Todo-List
+const todo_Form = document.querySelector('.todo-List__Add-task');
+todo_Form.addEventListener('submit', () => {
+    event.preventDefault();
+    const todo_Add = todo_Form.querySelector('input');
+    const todo_Add_Value = todo_Add.value;
+
+    const jsonData = {'20210419':[`${todo_Add_Value}`,`${todo_Add_Value}`]};
+    
+    
+    
+    // localStorage.setItem('todo',JSON.stringify(jsonData));
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Home - Times
 function current_times(){
     const current_date = new Date();
     const current_hour = addZeros(current_date.getHours(),2);
@@ -42,17 +72,25 @@ function addZeros(num, digit){
 }
 current_times();
 
-// Search
-const search_text = document.querySelector('.search__text');
-search_text.addEventListener('keyup', event => {
-    
-    const search_text_value = search_text.value;
-    const search_form = document.querySelector('#search__form');
+// Home- Name
+const name_form = document.querySelector('.name__form');
+name_form.addEventListener('submit', () => {
+    event.preventDefault();
+    const name_text = name_form.querySelector('input[type="text"]');
+        
+    localStorage.setItem('name', name_text.value);
+    name_YN();
+});
 
-    if(event.keyCode === 13){
-        
-        search_form.action(`https://www.google.com/search`);
-        search_form.submit();
-        
+function name_YN (){
+    const who = localStorage.getItem('name');
+    if(who !== null){
+        name_form.classList.add('name__Y');
+        document.querySelector('.name__view').textContent = `Welcome, ${who}`;
     }
-})
+}
+
+name_YN();
+
+
+// Home - Search

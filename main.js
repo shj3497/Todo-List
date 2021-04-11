@@ -18,21 +18,66 @@ todo_List__toggle2.addEventListener('click', () => {
 
 
 // Todo-List
-const todo_Form = document.querySelector('.todo-List__Add-task');
+const todo_Form = document.querySelector('.todo-List__form');
+const todo_Input = todo_Form.querySelector('input[type="text"]');
+const pending_List = document.querySelector('.pending');
 todo_Form.addEventListener('submit', () => {
     event.preventDefault();
-    const todo_Add = todo_Form.querySelector('input');
-    const todo_Add_Value = todo_Add.value;
-
-    const jsonData = {'20210419':[`${todo_Add_Value}`,`${todo_Add_Value}`]};
-    
-    
-    
+    const current_Value = todo_Input.value;
+    paintToDo(current_Value);
+    todo_Input.value = "";
     // localStorage.setItem('todo',JSON.stringify(jsonData));
 })
 
+const todo_array = [];
 
 
+function saveTodoLists(){
+    localStorage.setItem('toDoList_pending', JSON.stringify(todo_array));
+}
+
+const todo_date = new Intl.DateTimeFormat('ko-KR').format(new Date());
+
+function paintToDo(text){
+    const pending_li = document.createElement('li');
+    const chkBtn = document.createElement("button");
+    chkBtn.innerHTML = '<i class="fas fa-check"></i>';
+
+    const delBtn = document.createElement("button");
+    delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+
+    const span = document.createElement("span");
+    span.innerText = text;
+
+    const newId = todo_array.length + 1;
+    pending_li.id = newId;
+
+    pending_li.appendChild(span);
+    pending_li.appendChild(chkBtn);
+    pending_li.appendChild(delBtn);
+    pending_List.appendChild(pending_li);
+
+    const toDo_Obj = {
+        id: newId,
+        text: text
+    }
+
+    todo_array.push(toDo_Obj);
+    saveTodoLists();
+}
+
+function loadToDoLists(){
+    const toDoLists = localStorage.getItem('toDoList_pending');
+    if(toDoLists !== null){
+        const parsed_toDoLists = JSON.parse(toDoLists);
+        parsed_toDoLists.forEach((parsed_toDoList) => {
+            // console.log(parsed_toDoList.text);
+            // 스토리지에서 읽어온 리스트들을 paintToDo()로 뿌려준다.
+            paintToDo(parsed_toDoList.text);
+        })
+    }
+}
+loadToDoLists();
 
 
 

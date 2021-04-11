@@ -199,6 +199,7 @@ h3 {
 }
 
 .name__form input[type="text"] {
+  margin: 10px 0px;
   border: 0px;
   background: transparent;
   text-align: center;
@@ -213,7 +214,9 @@ h3 {
   border-radius: 24px;
   transition: 0.2s;
 }
-
+.name__form input[type="text"]:hover {
+  border-bottom-color: var(--color-purple);
+}
 .name__form input[type="text"]:focus {
   width: 70%;
   /* border: 2px solid var(--color-purple); */
@@ -230,6 +233,7 @@ h3 {
 }
 
 .search__form input[type="text"] {
+  margin: 10px 0px;
   border: 0px;
   background: transparent;
   text-align: center;
@@ -244,6 +248,9 @@ h3 {
   border-radius: 24px;
   transition: 0.2s;
 }
+.search__form input[type="text"]:hover {
+  border-bottom-color: var(--color-purple);
+}
 .search__form input[type="text"]:focus {
   width: 70%;
   /* border: 2px solid var(--color-purple); */
@@ -256,6 +263,7 @@ h3 {
 }
 
 .calendar table {
+  height: 300px;
   width: 80%;
   table-layout: fixed;
   margin: auto;
@@ -266,31 +274,65 @@ h3 {
   cursor: pointer;
 }
 
+.calendar__minus_year:hover,
+.calendar__minus_month:hover,
+.calendar__plus_month:hover,
+.calendar__plus_year:hover {
+  transform: scale(1.4);
+  color: blue;
+  transition: transform var(--animation-duration) ease;
+}
+
+.calendar__selected {
+  cursor: default;
+  font-size: var(--font-regular);
+  font-weight: var(--weight-semi-bold);
+}
+
 .calendar__today {
   cursor: pointer;
+  padding: 5px 13px;
   color: #52734d;
   font-weight: var(--weight-semi-bold);
   text-align: left;
+}
+.calendar__today:hover {
+  color: blue;
+  transition: var(--animation-duration);
 }
 
 .calendar__week {
   font-weight: var(--weight-semi-bold);
 }
 
-.calendar__week td:first-child {
-  color: red;
-}
-
-.calendar__week td:last-child {
-  color: blue;
-}
-
+.calendar__week td:first-child,
 .calendar__dates > tr > td:first-child {
   color: red;
 }
+
+.calendar__week td:last-child,
 .calendar__dates > tr > td:last-child {
   color: blue;
 }
+
+.prev__month__date,
+.next__month__date {
+  opacity: 0.3;
+}
+
+.this__month__date.today_date {
+  font-size: 20px;
+  display: block;
+  border: 1px solid var(--color-white);
+  background-color: #9bcc29;
+  color: var(--color-white);
+}
+
+.calendar__date:hover {
+  background-color: #9bcc29;
+  color: var(--color-white);
+}
+
 /* Contact */
 #contact {
   height: 10%;

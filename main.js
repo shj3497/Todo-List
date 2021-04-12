@@ -21,73 +21,163 @@ todo_List__toggle2.addEventListener('click', () => {
 const todo_Form = document.querySelector('.todo-List__form');
 const todo_Input = todo_Form.querySelector('input[type="text"]');
 const pending_List = document.querySelector('.pending');
+const finished_List = document.querySelector('.finished');
+
 todo_Form.addEventListener('submit', () => {
     event.preventDefault();
     const current_Value = todo_Input.value;
-    paintToDo(current_Value);
+    paintToDo(current_Value, 'toDoList_pending');
     todo_Input.value = "";
     // localStorage.setItem('todo',JSON.stringify(jsonData));
 })
 
-const todo_array = [];
+let todo_pending_array = [];
+let todo_finished_array = [];
 
-
-function saveTodoLists(){
-    localStorage.setItem('toDoList_pending', JSON.stringify(todo_array));
+function saveTodoLists(storage_name, todo_array){
+    localStorage.setItem(storage_name, JSON.stringify(todo_array));
 }
 
-const todo_date = new Intl.DateTimeFormat('ko-KR').format(new Date());
+// array의 길이로 id값을 주는것이 아닌 중복되지 않는 숫자로 변경
+let idNumbers = 1;
 
-function paintToDo(text){
-    const pending_li = document.createElement('li');
-    const chkBtn = document.createElement("button");
-    chkBtn.innerHTML = '<i class="fas fa-check"></i>';
+function paintToDo(text, storage_name){
+    // toDoList_pending 일 경우
+    if(storage_name === 'toDoList_pending'){
+        const li = document.createElement('li');
 
-    const delBtn = document.createElement("button");
-    delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        const chkBtn = document.createElement("button");
+        chkBtn.innerHTML = '<i class="far fa-arrow-alt-circle-down"></i>';
+        chkBtn.addEventListener('click', finishedTodo);
 
-    const span = document.createElement("span");
-    span.innerText = text;
+        const delBtn = document.createElement("button");
+        delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        delBtn.addEventListener('click', delete_pending_Todo);
 
-    const newId = todo_array.length + 1;
-    pending_li.id = newId;
+        const span = document.createElement("span");
+        span.innerText = text;
 
-    pending_li.appendChild(span);
-    pending_li.appendChild(chkBtn);
-    pending_li.appendChild(delBtn);
-    pending_List.appendChild(pending_li);
+        const newId = idNumbers;
+        idNumbers++;
+        li.id = newId;
 
-    const toDo_Obj = {
-        id: newId,
-        text: text
+        li.appendChild(span);
+        li.appendChild(delBtn);
+        li.appendChild(chkBtn);
+
+        pending_List.appendChild(li);
+        
+        const toDo_Obj = {
+            id: newId,
+            text: text
+        }
+
+        todo_pending_array.push(toDo_Obj);
+        saveTodoLists(storage_name, todo_pending_array);
+    }else{
+        // storage_name === toDoList_finished
+        const li = document.createElement('li');
+
+        const chkBtn = document.createElement("button");
+        chkBtn.innerHTML = '<i class="far fa-arrow-alt-circle-up"></i>';
+        chkBtn.addEventListener('click', unfinishedTodo);
+
+        const delBtn = document.createElement("button");
+        delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        delBtn.addEventListener('click', delete_finished_Todo);
+
+        const span = document.createElement("span");
+        span.innerText = text;
+
+        const newId = idNumbers;
+        idNumbers++;
+        li.id = newId;
+
+        li.appendChild(span);
+        li.appendChild(delBtn);
+        li.appendChild(chkBtn);
+
+        finished_List.appendChild(li);
+
+        const toDo_Obj = {
+            id: newId,
+            text: text
+        }
+
+        todo_finished_array.push(toDo_Obj);
+        saveTodoLists(storage_name, todo_finished_array);
     }
-
-    todo_array.push(toDo_Obj);
-    saveTodoLists();
 }
 
-function loadToDoLists(){
-    const toDoLists = localStorage.getItem('toDoList_pending');
+function loadToDoLists(storage_name){
+    const toDoLists = localStorage.getItem(storage_name);
     if(toDoLists !== null){
         const parsed_toDoLists = JSON.parse(toDoLists);
         parsed_toDoLists.forEach((parsed_toDoList) => {
             // console.log(parsed_toDoList.text);
             // 스토리지에서 읽어온 리스트들을 paintToDo()로 뿌려준다.
-            paintToDo(parsed_toDoList.text);
+            paintToDo(parsed_toDoList.text, storage_name);
         })
     }
 }
-loadToDoLists();
+loadToDoLists('toDoList_pending');
+loadToDoLists('toDoList_finished');
 
+// todoDelBtn
+function delete_pending_Todo(event){
+    const btn = event.target;
+    const li = btn.parentNode.parentNode;
+    console.log(li);
+    pending_List.removeChild(li);
+    // console.log(`todo_array >>> ${todo_array}`)
+    const cleanTodo_array = todo_pending_array.filter((toDo) => {
+        // console.log(toDo)
+        // todo_array : 스토리지에서 읽어온 json데이터들이 배열에 담겨져있음
+        return toDo.id !== parseInt(li.id);
+    });
+    todo_pending_array = cleanTodo_array;
+    saveTodoLists('toDoList_pending', todo_pending_array);
+}
 
+// pending에 있는 체크버튼
+function finishedTodo(event){
+    const btn = event.target;
+    const li = btn.parentNode.parentNode;
+    console.log(li);
+    // console.log(li.firstChild.innerHTML);
+    const chk_text = li.firstChild.innerHTML;
+    
+    paintToDo(chk_text, 'toDoList_finished')
+    delete_pending_Todo(event);
+    
+}
 
+// Finished에 있는 체크버튼
+function unfinishedTodo(event){
+    const btn = event.target;
+    const li = btn.parentNode.parentNode;
+    console.log(li);
+    // console.log(li.firstChild.innerHTML);
+    const chk_text = li.firstChild.innerHTML;
+    
+    paintToDo(chk_text, 'toDoList_pending');
+    delete_finished_Todo(event);
+}
 
-
-
-
-
-
-
+function delete_finished_Todo(event){
+    const btn = event.target;
+    const li = btn.parentNode.parentNode;
+    console.log(li);
+    finished_List.removeChild(li);
+    
+    const cleanTodo_array = todo_finished_array.filter((toDo) => {
+        // console.log(toDo)
+        // todo_array : 스토리지에서 읽어온 json데이터들이 배열에 담겨져있음
+        return toDo.id !== parseInt(li.id);
+    });
+    todo_finished_array = cleanTodo_array;
+    saveTodoLists('toDoList_finished', todo_finished_array);
+}
 
 
 

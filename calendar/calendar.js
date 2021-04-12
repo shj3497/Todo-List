@@ -18,7 +18,7 @@ const viewCalendar = () => {
     const viewMonth_eng = new Intl.DateTimeFormat('en-US', {month:'long'}).format(date);
     // console.log(viewMonth_eng)
     
-    document.querySelector('.calendar__selected').textContent = `${viewMonth_eng} ${viewYear}`;
+    document.querySelector('.calendar__selected').textContent = `${viewMonth_eng}, ${viewYear}`;
     
     const prev_month = new Date(viewYear, viewMonth, 0);
     // console.log(prev_month)

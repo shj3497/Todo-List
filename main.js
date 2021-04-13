@@ -321,6 +321,7 @@ function airpollution_today(info){
     const pm2_5_num = parseInt(info.list[0].components.pm2_5);
     air_dust_pm10.textContent = `${air_pm10_kr(pm10_num)}`;
     air_dust_pm2_5.textContent = `${air_pm2_5_kr(pm2_5_num)}`;
+    
 }
 
 function air_pm10_kr(pm10_num){
@@ -328,12 +329,16 @@ function air_pm10_kr(pm10_num){
 
     if(pm10_num <= 30){
         pm10_kr = '좋음';
+        air_dust_pm10.style.color = '#0000FF';
     }else if(30 < pm10_num <= 80){
         pm10_kr = '보통';
+        air_dust_pm10.style.color = '#00FF00';
     }else if(80 < pm10_num <= 150){
         pm10_kr = '나쁨';
+        air_dust_pm10.style.color = '#FFFF00';
     }else{
         pm10_kr = '매우 나쁨';
+        air_dust_pm10.style.color = '#00FF00';
     }
     return `${pm10_num} (${pm10_kr})`;
 }
@@ -343,12 +348,16 @@ function air_pm2_5_kr(pm2_5_num){
 
     if (pm2_5_num <= 15){
         pm2_5_kr = '좋음';
+        air_dust_pm2_5.style.color = '#0000FF';
     }else if(15 < pm2_5_num <= 35){
         pm2_5_kr = '보통';
+        air_dust_pm2_5.style.color = '#00FF00';
     }else if(35< pm2_5_num <= 75){
         pm2_5_kr = '나쁨';
+        air_dust_pm2_5.style.color = '#FFFF00';
     }else{
         pm2_5_kr = '매우 나쁨';
+        air_dust_pm2_5.style.color = '#00FF00';
     }
     return `${pm2_5_num} (${pm2_5_kr})`;
 }

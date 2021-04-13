@@ -478,7 +478,7 @@ h3 {
 
 .airpollution span {
   position: absolute;
-  left: 60%;
+  right: 20px;
 }
 
 .weather_week {

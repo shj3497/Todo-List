@@ -235,7 +235,14 @@ name_YN();
 
 
 // Home - Search
-
+const search_form = document.querySelector('.search__form');
+const search_value = search_form.querySelector('input[type="text"]');
+search_form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    window.open(`https://www.google.com/search?q=${search_value.value}`);
+    search_value.value = "";
+})
 
 
 

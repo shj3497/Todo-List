@@ -246,16 +246,20 @@ const today_temp = document.querySelector('.weather__t_temp');
 const today_max_min_temp = document.querySelector('.weather__t_max_min_temp');
 const today_max_temp = document.querySelector('.t_maxtemp');
 const today_min_temp = document.querySelector('.t_mintemp');
+const today_weather_desc = document.querySelector('.weather__t_desc');
 const today_weather_img = document.querySelector('.weather__t_img');
+const today_humidity = document.querySelector('.weather__t_humidity');
 
 const API_KEY = "d962b1b2789d7bcbd783a380702aa63c";
 
 function weather_today(info){
     city.textContent = info.name;
     today_temp.textContent = `${info.main.temp}℃`;
-    today_max_temp.textContent = `${info.main.temp_max}℃`
-    today_min_temp.textContent = `${info.main.temp_min}℃`
-    today_weather_img.src = `http://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`
+    today_max_temp.textContent = `${info.main.temp_max}℃`;
+    today_min_temp.textContent = `${info.main.temp_min}℃`;
+    today_weather_img.src = `http://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`;
+    today_humidity.textContent = `습도 ${info.main.humidity}%`;
+    
 }
 function getWeather(lat, lon){
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=kr&appid=${API_KEY}`).then(
@@ -303,16 +307,61 @@ function loadCoordinate(){
         const parseCoords = JSON.parse(loadedCoords);
         // console.log(parseCoords);
         getWeather(parseCoords.latitude, parseCoords.longitude);
+        getAirpollution(parseCoords.latitude, parseCoords.longitude);
     }
 }
 loadCoordinate();
 
+// Air pollution
+const air_dust_pm10 = document.querySelector('.air__dust_pm10');
+const air_dust_pm2_5 = document.querySelector('.air__dust_pm2_5');
 
+function airpollution_today(info){
+    const pm10_num = parseInt(info.list[0].components.pm10);
+    const pm2_5_num = parseInt(info.list[0].components.pm2_5);
+    air_dust_pm10.textContent = `${air_pm10_kr(pm10_num)}`;
+    air_dust_pm2_5.textContent = `${air_pm2_5_kr(pm2_5_num)}`;
+}
 
+function air_pm10_kr(pm10_num){
+    let pm10_kr;
 
+    if(pm10_num <= 30){
+        pm10_kr = '좋음';
+    }else if(30 < pm10_num <= 80){
+        pm10_kr = '보통';
+    }else if(80 < pm10_num <= 150){
+        pm10_kr = '나쁨';
+    }else{
+        pm10_kr = '매우 나쁨';
+    }
+    return `${pm10_num} (${pm10_kr})`;
+}
 
+function air_pm2_5_kr(pm2_5_num){
+    let pm2_5_kr;
 
+    if (pm2_5_num <= 15){
+        pm2_5_kr = '좋음';
+    }else if(15 < pm2_5_num <= 35){
+        pm2_5_kr = '보통';
+    }else if(35< pm2_5_num <= 75){
+        pm2_5_kr = '나쁨';
+    }else{
+        pm2_5_kr = '매우 나쁨';
+    }
+    return `${pm2_5_num} (${pm2_5_kr})`;
+}
 
-
-
-// airQuality
+function getAirpollution(lat, lon){
+    fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`).then(
+        function(response){
+            return response.json();
+        }
+    ).then(
+        function(json){
+            console.log(json);
+            airpollution_today(json);
+        }
+    )
+}

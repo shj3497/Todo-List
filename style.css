@@ -112,7 +112,6 @@ p {
   width: 30%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-
   position: relative;
   transform: translateX(-100%);
 }
@@ -413,24 +412,33 @@ h3 {
   display: flex;
   justify-content: center;
   width: 50%;
-  margin: 10px;
+  margin: 10px 5px 10px 10px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 25px;
 }
 
 .weather__t_left {
-  margin-left: -30px;
   width: 120px;
   height: 120px;
+  margin: auto;
 }
+
 .weather__t_img {
   width: 120px;
   height: 120px;
 }
 
 .weather__t_right {
+  width: 50%;
   margin-top: auto;
   margin-bottom: auto;
+  padding: 10px;
+  text-align: left;
+}
+
+.weather__t_city {
+  font-size: var(--font-small);
+  font-weight: var(--weight-regular);
 }
 
 .weather__t_temp {
@@ -446,13 +454,31 @@ h3 {
   color: blue;
 }
 
+.weather__t_humidity {
+  color: var(--color-black);
+  font-size: var(--font-small);
+}
 /* airpollution */
 .airpollution {
-  display: flex;
+  position: relative;
+  padding: 20px;
+  text-align: left;
   width: 50%;
-  margin: 10px;
+  margin: 10px 10px 10px 5px;
+  justify-content: space-between;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 25px;
+}
+
+.airpollution h3 {
+  color: black;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.airpollution span {
+  position: absolute;
+  left: 60%;
 }
 
 .weather_week {

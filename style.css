@@ -233,19 +233,6 @@ h3 {
   color: var(--color-white);
 }
 
-/* Web Site go */
-.website__menu {
-  display: flex;
-  margin: 10px 0px;
-  justify-content: center;
-}
-
-.website__menu__item img {
-  height: 40px;
-  width: 40px;
-  margin: 0px 10px;
-}
-
 /* Home */
 #home {
   width: 40%;
@@ -316,12 +303,35 @@ h3 {
 
 /* Calendar - Weather */
 #calendar-weather {
+  margin: 10px;
   width: 30%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+}
+
+/* Web Site go */
+.website__menu {
+  display: flex;
+  margin: 10px 0px;
+  justify-content: center;
+}
+
+.website__menu__item img {
+  height: 40px;
+  width: 40px;
+  margin: 0px 10px;
+}
+
+/* Calendar */
+.calendar {
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
 }
 
 .calendar table {
   height: 300px;
-  width: 80%;
+  width: 90%;
   table-layout: fixed;
   margin: auto;
   font-size: var(--font-regular);
@@ -383,13 +393,73 @@ h3 {
   border: 1px solid var(--color-white);
   background-color: #9bcc29;
   color: var(--color-white);
+  border-radius: 25px;
 }
 
 .calendar__date:hover {
   background-color: #9bcc29;
   color: var(--color-white);
+  border-radius: 25px;
 }
 
+/* Wather-Air */
+.weather-air {
+  display: flex;
+  justify-content: center;
+}
+
+/* Weather */
+.weather__t {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+}
+
+.weather__t_left {
+  margin-left: -30px;
+  width: 120px;
+  height: 120px;
+}
+.weather__t_img {
+  width: 120px;
+  height: 120px;
+}
+
+.weather__t_right {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.weather__t_temp {
+  color: var(--color-black);
+  font-size: 22px;
+  font-weight: var(--weight-semi-bold);
+}
+
+.t_maxtemp {
+  color: red;
+}
+.t_mintemp {
+  color: blue;
+}
+
+/* airpollution */
+.airpollution {
+  display: flex;
+  width: 50%;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+}
+
+.weather_week {
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+}
 /* Contact */
 #contact {
   height: 10%;

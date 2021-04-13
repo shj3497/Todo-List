@@ -23,6 +23,7 @@ const todo_Input = todo_Form.querySelector('input[type="text"]');
 const pending_List = document.querySelector('.pending');
 const finished_List = document.querySelector('.finished');
 
+// Form태그에서 submit하면 동작하는 함수
 todo_Form.addEventListener('submit', () => {
     event.preventDefault();
     const current_Value = todo_Input.value;
@@ -31,9 +32,11 @@ todo_Form.addEventListener('submit', () => {
     // localStorage.setItem('todo',JSON.stringify(jsonData));
 })
 
+// 공통으로 쓰려다 안되서 두개로 쪼갬..
 let todo_pending_array = [];
 let todo_finished_array = [];
 
+// 변경사항이 있을 때 저장하는 함수
 function saveTodoLists(storage_name, todo_array){
     localStorage.setItem(storage_name, JSON.stringify(todo_array));
 }
@@ -41,6 +44,7 @@ function saveTodoLists(storage_name, todo_array){
 // array의 길이로 id값을 주는것이 아닌 중복되지 않는 숫자로 변경
 let idNumbers = 1;
 
+// ul태그 밑에 li로 뿌려주는 함수
 function paintToDo(text, storage_name){
     // toDoList_pending 일 경우
     if(storage_name === 'toDoList_pending'){
@@ -109,6 +113,7 @@ function paintToDo(text, storage_name){
     }
 }
 
+// LocalStorage에 있는 데이터들을 읽어오는 함수
 function loadToDoLists(storage_name){
     const toDoLists = localStorage.getItem(storage_name);
     if(toDoLists !== null){
@@ -123,7 +128,7 @@ function loadToDoLists(storage_name){
 loadToDoLists('toDoList_pending');
 loadToDoLists('toDoList_finished');
 
-// todoDelBtn
+// Pending에 있는 삭제버튼
 function delete_pending_Todo(event){
     const btn = event.target;
     const li = btn.parentNode.parentNode;
@@ -139,7 +144,7 @@ function delete_pending_Todo(event){
     saveTodoLists('toDoList_pending', todo_pending_array);
 }
 
-// pending에 있는 체크버튼
+// Pending에서 Finished로 올리는 버튼
 function finishedTodo(event){
     const btn = event.target;
     const li = btn.parentNode.parentNode;
@@ -152,7 +157,7 @@ function finishedTodo(event){
     
 }
 
-// Finished에 있는 체크버튼
+// Finished에서 Pending으로 올리는 버튼
 function unfinishedTodo(event){
     const btn = event.target;
     const li = btn.parentNode.parentNode;
@@ -164,6 +169,7 @@ function unfinishedTodo(event){
     delete_finished_Todo(event);
 }
 
+// Finished에 있는 삭제버튼
 function delete_finished_Todo(event){
     const btn = event.target;
     const li = btn.parentNode.parentNode;
@@ -229,3 +235,84 @@ name_YN();
 
 
 // Home - Search
+
+
+
+
+
+// Weather
+const city = document.querySelector('.weather__t_city');
+const today_temp = document.querySelector('.weather__t_temp');
+const today_max_min_temp = document.querySelector('.weather__t_max_min_temp');
+const today_max_temp = document.querySelector('.t_maxtemp');
+const today_min_temp = document.querySelector('.t_mintemp');
+const today_weather_img = document.querySelector('.weather__t_img');
+
+const API_KEY = "d962b1b2789d7bcbd783a380702aa63c";
+
+function weather_today(info){
+    city.textContent = info.name;
+    today_temp.textContent = `${info.main.temp}℃`;
+    today_max_temp.textContent = `${info.main.temp_max}℃`
+    today_min_temp.textContent = `${info.main.temp_min}℃`
+    today_weather_img.src = `http://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`
+}
+function getWeather(lat, lon){
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=kr&appid=${API_KEY}`).then(
+        function(response){
+            return response.json();
+        }
+    ).then(
+        function(json){
+            console.log(json);
+            weather_today(json);
+        }
+    );
+
+}
+
+function saveCoords(coordsObj){
+    localStorage.setItem('geocoords', JSON.stringify(coordsObj));
+}
+
+function handleGeoSuccess(position){
+    console.log(position)
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    // console.log(`lat >> : ${latitude}, lon >> : ${longitude}`);
+    const coordsObj = {
+        latitude:latitude,
+        longitude:longitude
+    };
+    saveCoords(coordsObj);
+    getWeather(latitude, longitude);
+}
+
+function handleGeoError(){
+    console.log("Can't access Geo Location")
+}
+function askForcoordinate(){
+    navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
+}
+
+function loadCoordinate(){
+    const loadedCoords = localStorage.getItem('geocoords');
+    if(loadedCoords === null){
+        askForcoordinate();
+    }else{
+        const parseCoords = JSON.parse(loadedCoords);
+        // console.log(parseCoords);
+        getWeather(parseCoords.latitude, parseCoords.longitude);
+    }
+}
+loadCoordinate();
+
+
+
+
+
+
+
+
+
+// airQuality

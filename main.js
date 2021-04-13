@@ -363,7 +363,7 @@ function air_pm2_5_kr(pm2_5_num){
 }
 
 function getAirpollution(lat, lon){
-    fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`).then(
+    fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`).then(
         function(response){
             return response.json();
         }

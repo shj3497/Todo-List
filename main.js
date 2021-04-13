@@ -254,10 +254,10 @@ const API_KEY = "d962b1b2789d7bcbd783a380702aa63c";
 
 function weather_today(info){
     city.textContent = info.name;
-    today_temp.textContent = `${info.main.temp}℃`;
-    today_max_temp.textContent = `${info.main.temp_max}℃`;
-    today_min_temp.textContent = `${info.main.temp_min}℃`;
-    today_weather_img.src = `http://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`;
+    today_temp.textContent = `${info.main.temp.toFixed()}℃`;
+    today_max_temp.textContent = `${info.main.temp_max.toFixed()}℃`;
+    today_min_temp.textContent = `${info.main.temp_min.toFixed()}℃`;
+    today_weather_img.src = `https://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`;
     today_humidity.textContent = `습도 ${info.main.humidity}%`;
     
 }
@@ -308,6 +308,7 @@ function loadCoordinate(){
         // console.log(parseCoords);
         getWeather(parseCoords.latitude, parseCoords.longitude);
         getAirpollution(parseCoords.latitude, parseCoords.longitude);
+        getWeather_week(parseCoords.latitude, parseCoords.longitude);
     }
 }
 loadCoordinate();
@@ -371,6 +372,45 @@ function getAirpollution(lat, lon){
         function(json){
             console.log(json);
             airpollution_today(json);
+        }
+    )
+}
+
+// Week Weather
+const w_date = new Date();
+function day_kr(w_day){
+    return new Intl.DateTimeFormat('ko-KR',{weekday:'long'}).format(w_day);
+}
+function weather_week(info){
+    for(let i=1; i<6; i++){
+        const weather__w = document.querySelector(`.weather__week_${i}`);
+
+        // console.log(new Date(w_date.getFullYear(), w_date.getMonth(), w_date.getDate() + i));
+        const w_day = new Date(w_date.getFullYear(), w_date.getMonth(), w_date.getDate() + i);
+
+        const weather__w_day = weather__w.querySelector('.w_day');
+        const weather__w_img = weather__w.querySelector('.weather__w_img');
+        const weather__w_mintemp = weather__w.querySelector('.w_mintemp');
+        const weather__w_maxtemp = weather__w.querySelector('.w_maxtemp');
+        const weather__w_humidity = weather__w.querySelector('.weather__w_humidity');
+
+        weather__w_day.textContent = day_kr(w_day);
+        weather__w_img.src = `https://openweathermap.org/img/wn/${info.daily[i].weather[0].icon}@2x.png`
+        weather__w_mintemp.textContent = `${info.daily[i].temp.min.toFixed()}℃`;
+        weather__w_maxtemp.textContent = `${info.daily[i].temp.max.toFixed()}℃`;
+        weather__w_humidity.textContent = `습도 ${info.daily[i].humidity}%`;
+    }
+}
+
+function getWeather_week(lat, lon){
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${API_KEY}&units=metric`).then(
+        function(response){
+            return response.json();
+        }
+    ).then(
+        function(json){
+            console.log(json);
+            weather_week(json);
         }
     )
 }

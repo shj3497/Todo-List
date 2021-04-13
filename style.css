@@ -306,6 +306,7 @@ h3 {
   width: 30%;
   background: rgba(0, 0, 0, 0.3);
   border-radius: 25px;
+  margin: auto;
 }
 
 /* Web Site go */
@@ -481,11 +482,14 @@ h3 {
   right: 20px;
 }
 
-.weather_week {
+.weather__week {
+  display: flex;
+  justify-content: center;
   margin: 10px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 25px;
 }
+
 /* Contact */
 #contact {
   height: 10%;

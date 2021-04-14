@@ -248,6 +248,8 @@ p {
 }
 .home__clock h1 {
   color: var(--color-white);
+  font-weight: 400;
+  font-family: "Orelega One", cursive;
 }
 
 /* Home - name */

@@ -37,7 +37,7 @@ body {
   width: 100vw;
   font-family: "Open Sans", sans-serif;
   cursor: default;
-  background: url("imgs/background/beautiful_sky.png") center/cover no-repeat;
+  background: center/cover no-repeat;
 }
 
 a {
@@ -127,9 +127,10 @@ p {
 }
 
 .todo-List h2,
-h3 {
+.todo-List h3 {
   margin: 20px;
   color: var(--color-white);
+  text-shadow: yellow 3px 0 5px;
 }
 
 .todo-List__form {
@@ -158,19 +159,21 @@ h3 {
 
 .todo-List__form input:hover {
   border-bottom-color: var(--color-purple);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .todo-List__form input:focus {
   width: 90%;
   border-color: var(--color-purple);
+  background: rgba(0, 0, 0, 0.3);
+}
+.todo-List__form input::placeholder {
+  color: var(--color-dark-white);
 }
 
 .todo-List__title {
   height: 40%;
   margin: 10px 0px;
-}
-.todo-List__title h3 {
-  text-shadow: yellow 3px 0 5px;
 }
 
 .todo-List__content {
@@ -215,7 +218,7 @@ h3 {
   left: 12px;
   font-size: 40px;
   font-weight: var(--weight-semi-bold);
-  color: var(--color-black);
+  color: var(--color-white);
   display: none;
 }
 
@@ -231,10 +234,20 @@ h3 {
   font-weight: var(--weight-semi-bold);
   color: var(--color-white);
 }
+.todo-List__toggle-btn2:hover {
+  transform: scale(1.2);
+  transition: transform var(--animation-duration) ease;
+}
 
 /* Home */
 #home {
   width: 40%;
+}
+.home__clock {
+  margin-bottom: 400px;
+}
+.home__clock h1 {
+  color: var(--color-white);
 }
 
 /* Home - name */
@@ -254,21 +267,32 @@ h3 {
   width: 240px;
   outline: none;
   color: var(--color-black);
+  font-weight: var(--weight-semi-bold);
+  background: rgba(0, 0, 0, 0);
   border-radius: 24px;
   transition: 0.2s;
 }
 .name__form input[type="text"]:hover {
   border-bottom-color: var(--color-purple);
+  background: rgba(0, 0, 0, 0.3);
 }
 .name__form input[type="text"]:focus {
   width: 70%;
-  /* border: 2px solid var(--color-purple); */
   border-color: var(--color-purple);
+  background: rgba(0, 0, 0, 0.3);
+}
+.name__form input[type="text"]::placeholder {
+  color: var(--color-dark-white);
+  font-weight: var(--weight-regular);
 }
 
 .name__view {
+  position: absolute;
+  top: 0px;
+  right: 20px;
   color: var(--color-black);
   font-weight: var(--weight-bold);
+  font-size: var(--font-regular);
 }
 
 .name__form.name__Y {
@@ -288,16 +312,24 @@ h3 {
   width: 240px;
   outline: none;
   color: var(--color-black);
+  font-weight: var(--weight-semi-bold);
+  background: rgba(0, 0, 0, 0);
   border-radius: 24px;
   transition: 0.2s;
 }
 .search__form input[type="text"]:hover {
   border-bottom-color: var(--color-purple);
+  background: rgba(0, 0, 0, 0.3);
 }
 .search__form input[type="text"]:focus {
   width: 70%;
   /* border: 2px solid var(--color-purple); */
   border-color: var(--color-purple);
+  background: rgba(0, 0, 0, 0.3);
+}
+.search__form input[type="text"]::placeholder {
+  color: var(--color-dark-white);
+  font-weight: var(--weight-regular);
 }
 
 /* Calendar - Weather */
@@ -359,7 +391,7 @@ h3 {
 .calendar__today {
   cursor: pointer;
   padding: 5px 13px;
-  color: #52734d;
+  color: var(--color-black);
   font-weight: var(--weight-semi-bold);
   text-align: left;
 }
@@ -408,7 +440,7 @@ h3 {
   justify-content: center;
 }
 
-/* Weather */
+/* Weather Today */
 .weather__t {
   display: flex;
   justify-content: center;
@@ -490,6 +522,17 @@ h3 {
   border-radius: 25px;
 }
 
+/* Weather Week */
+.w_day {
+  font-weight: var(--weight-semi-bold);
+  font-size: var(--font-regular);
+}
+.w_mintemp {
+  color: blue;
+}
+.w_maxtemp {
+  color: red;
+}
 /* Contact */
 #contact {
   height: 10%;

@@ -227,7 +227,7 @@ function name_YN (){
     const who = localStorage.getItem('name');
     if(who !== null){
         name_form.classList.add('name__Y');
-        document.querySelector('.name__view').textContent = `Welcome, ${who}`;
+        document.querySelector('.name__view').textContent = `${who}`;
     }
 }
 

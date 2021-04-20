@@ -495,7 +495,6 @@ p {
 }
 /* airpollution */
 .airpollution {
-  position: relative;
   padding: 20px;
   text-align: left;
   width: 50%;
@@ -511,7 +510,12 @@ p {
   margin-bottom: 10px;
 }
 
-.airpollution span {
+.air__dust_pm10,
+.air__dust_pm2_5 {
+  position: relative;
+}
+.air__dust_pm10 > span,
+.air__dust_pm2_5 > span {
   position: absolute;
   right: 20px;
 }

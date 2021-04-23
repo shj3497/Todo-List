@@ -11,7 +11,7 @@ function getRandom(){
 
 function setBackground(imgNum){
     // body.style.background.url = `imgs/background/${imgNum + 1}.png`;
-    console.log(imgNum)
+    // console.log(imgNum)
     body.style.backgroundImage = `url(imgs/background/${imgNum + 1}.png)`;
     // body.style.backgroundRepeat = 'no-repeat';
     
